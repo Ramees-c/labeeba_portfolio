@@ -1,87 +1,134 @@
-import React from 'react'
-import { motion } from 'framer-motion'
-import { ArrowUpRight, TrendingUp } from 'lucide-react'
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowUpRight } from "lucide-react";
 
 export default function Works() {
+  const sectionRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const glow1Y = useTransform(scrollYProgress, [0, 1], [-50, 50]);
+  const glow2Y = useTransform(scrollYProgress, [0, 1], [50, -50]);
+
   const projects = [
     {
-      id: 'proj-1',
-      title: 'LuxeVibe GCC — E-Commerce Fashion',
-      category: 'Paid Ads (PPC)',
-      tag: 'E-Commerce Scaling',
-      client: 'LuxeVibe Apparel · Dubai, UAE',
-      image: '/projects/luxevibe.jpg',
-      heroMetric: '+380%',
-      heroMetricLabel: 'ROAS Surge',
+      id: "proj-1",
+      title: "Healthcare Lead Generation — Meta Ads",
+      category: "Paid Advertising",
+      tag: "Messaging Campaign",
+      client: "Medical Center · Ajman, UAE",
+      image: "/projects/project1.jpeg",
+      isNumeric: true,
+      numericValue: 152,
+      suffix: "",
+      heroMetric: "152",
+      heroMetricLabel: "Messaging Conversations Started",
       description:
-        'Engineered an omnichannel performance funnel across Meta Ads, Google Performance Max, and TikTok Shop, scaling revenue while reducing cost per purchase.',
-      deliverables: ['Meta Ads Funnels', 'Google PMax', 'UGC Creatives'],
-      badgeBg: 'bg-white/95 text-[#FF6634] border-white/60 shadow-xs',
+        "Executed a Meta Ads messaging campaign for a medical center in Ajman, UAE, generating 152 messaging conversations at an average cost of AED 4.19 per",
+      deliverables: [
+        "Meta Ads Campaign Management",
+        "Audience Targeting",
+        "Messaging Lead Generation",
+        "Campaign Performance Monitoring",
+      ],
+      badgeBg: "bg-white/95 text-[#FF6634] border-white/60 shadow-xs",
     },
     {
-      id: 'proj-2',
-      title: 'Nexara Pay — Enterprise FinTech',
-      category: 'SEO & Search',
-      tag: 'Organic Lead Gen',
-      client: 'Nexara Global FinTech · DIFC Dubai',
-      image: '/projects/nexara.jpg',
-      heroMetric: '#1 Rank',
-      heroMetricLabel: 'For 60+ Target Keywords',
+      id: "proj-2",
+      title: "SEO Blog Writing & Optimization",
+      category: "SEO & Content Marketing",
+      tag: "Google Search Ranking",
+      client: "Taxi Service · Kannur",
+      image: "/projects/project2.jpeg",
+      isNumeric: false,
+      heroMetric: "2nd",
+      heroMetricLabel: "Google Search Position",
       description:
-        'Architected a topical authority content network and executed technical SEO enhancements, dominating page one search rankings across Middle East & Europe.',
-      deliverables: ['Technical SEO Audit', 'Cluster Architecture', 'Digital PR'],
-      badgeBg: 'bg-white/95 text-[#1e6a10] border-white/60 shadow-xs',
+        "Created SEO-friendly blog content focused on keyword research, on-page optimization, and organic search visibility, achieving the 2nd position on Google for the target keyword.",
+      deliverables: [
+        "SEO Keyword Research",
+        "SEO Blog Writing",
+        "On-Page SEO",
+        "Content Optimization",
+      ],
+      badgeBg: "bg-white/95 text-[#1e6a10] border-white/60 shadow-xs",
     },
     {
-      id: 'proj-3',
-      title: 'Aura Botanicals — DTC Skincare',
-      category: 'Social & Growth',
-      tag: 'Viral Community',
-      client: 'Aura Skincare Labs · Dubai & Riyadh',
-      image: '/projects/aura.jpg',
-      heroMetric: '3.8M+',
-      heroMetricLabel: 'Organic Reel Impressions',
+      id: "proj-3",
+      title: "Social Media Performance & Audience Growth",
+      category: "Social Media Marketing",
+      tag: "Audience Growth",
+      client: "Baby Clothing Brand",
+      image: "/projects/project3.jpeg",
+      isNumeric: true,
+      numericValue: 33.4,
+      suffix: "K",
+      heroMetric: "33.4K",
+      heroMetricLabel: "Total Views",
       description:
-        'Devised and rolled out a creator-led viral marketing campaign across TikTok and Instagram, generating 3 consecutive sold-out product drops in the UAE.',
-      deliverables: ['Micro-Creator Strategy', 'Viral Video Hooks', 'Drip Funnels'],
-      badgeBg: 'bg-white/95 text-[#926000] border-white/60 shadow-xs',
+        "Managed Instagram and Facebook content and promotional activities to improve brand visibility, audience reach, and engagement, achieving 33.4K views and 9.2K reach during the reporting period.",
+      deliverables: [
+        "Social Media Management",
+        "Content Strategy",
+        "Audience Engagement",
+        "Performance Analytics",
+      ],
+      badgeBg: "bg-white/95 text-[#926000] border-white/60 shadow-xs",
     },
     {
-      id: 'proj-4',
-      title: 'Oasis Wellness Clinics — Healthcare',
-      category: 'Paid Ads (PPC)',
-      tag: 'Lead Gen & CRO',
-      client: 'Oasis Medical Care · Abu Dhabi & Dubai',
-      image: '/projects/oasis.jpg',
-      heroMetric: '+72%',
-      heroMetricLabel: 'Consultation Booking Rate',
+      id: "proj-4",
+      title: "E-commerce Conversion Tracking",
+      category: "Analytics & Tracking",
+      tag: "Meta Pixel",
+      client: "Baby Clothing Brand",
+      image: "/projects/project4.jpeg",
+      isNumeric: true,
+      numericValue: 2.7,
+      suffix: "K+",
+      heroMetric: "2.7K+",
+      heroMetricLabel: "View Content Events",
       description:
-        'Redesigned appointment booking funnels and deployed precision geolocated Google Search & Meta Lead Ads for premier aesthetic clinics in Dubai & Abu Dhabi.',
-      deliverables: ['Mobile Booking CRO', 'Local Search Ads', 'WhatsApp Automation'],
-      badgeBg: 'bg-white/95 text-[#FF6634] border-white/60 shadow-xs',
+        "Implemented and monitored Meta Pixel events for a newly launched e-commerce website, tracking customer interactions from product views to checkout and purchases.",
+      deliverables: [
+        "Meta Pixel Event Tracking",
+        "Add to Cart Tracking",
+        "Checkout Event Monitoring",
+        "Purchase Tracking",
+        "Conversion Funnel Analysis",
+      ],
+      badgeBg: "bg-white/95 text-[#FF6634] border-white/60 shadow-xs",
     },
-  ]
+  ];
 
   return (
-    <section id="works" className="relative w-full py-12 sm:py-16 md:py-20 overflow-hidden select-none bg-[#F9F7F2]">
-      {/* Subtle ambient lighting */}
-      <div
-        className="pointer-events-none absolute top-10 right-1/4 w-[480px] h-[480px] bg-[#FFCD38]/10 rounded-full blur-3xl -z-10"
+    <section
+      ref={sectionRef}
+      id="works"
+      className="relative w-full py-14 sm:py-18 md:py-24 overflow-hidden select-none bg-[#F9F7F2]"
+    >
+      {/* Subtle ambient lighting with parallax */}
+      <motion.div
+        style={{ y: glow1Y }}
+        className="pointer-events-none absolute top-10 right-1/4 w-[480px] h-[480px] bg-[#FFCD38]/10 rounded-full blur-3xl -z-10 will-change-transform"
         aria-hidden="true"
       />
-      <div
-        className="pointer-events-none absolute bottom-10 left-1/4 w-[480px] h-[480px] bg-[#FF6634]/5 rounded-full blur-3xl -z-10"
+      <motion.div
+        style={{ y: glow2Y }}
+        className="pointer-events-none absolute bottom-10 left-1/4 w-[480px] h-[480px] bg-[#FF6634]/5 rounded-full blur-3xl -z-10 will-change-transform"
         aria-hidden="true"
       />
 
       <div className="max-w-[1240px] mx-auto px-4 sm:px-8 lg:px-12">
         {/* Section Heading Block */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 sm:mb-14">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, y: 25, filter: "blur(6px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true, amount: 0.3, margin: "-40px" }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-2xl"
           >
             {/* Eyebrow Pill */}
@@ -96,21 +143,23 @@ export default function Works() {
             </div>
 
             <h3 className="font-display font-black text-2xl sm:text-3xl md:text-4xl lg:text-[42px] text-neutral-950 tracking-tight uppercase leading-[1.1]">
-              FEATURED CLIENT CASE STUDIES &{' '}
+              FEATURED WORK &{" "}
               <span className="text-[#FF6634] underline decoration-neutral-900/10 decoration-wavy decoration-2">
-                PROVEN RESULTS
+                MEASURABLE RESULTS
               </span>
             </h3>
           </motion.div>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.15 }}
+            initial={{ opacity: 0, y: 25, filter: "blur(6px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true, amount: 0.3, margin: "-40px" }}
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
             className="font-body text-xs sm:text-sm text-neutral-600 max-w-md leading-relaxed"
           >
-            Real campaigns, verified revenue growth, and scalable marketing architectures executed across the UAE and global markets.
+            Explore real-world client campaigns delivering qualified leads, top
+            Google search rankings, audience growth, and verified conversion
+            tracking.
           </motion.p>
         </div>
 
@@ -118,12 +167,17 @@ export default function Works() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8">
           {projects.map((project, idx) => (
             <motion.div
-              key={project.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: idx * 0.08 }}
-              className="group relative bg-white rounded-2xl sm:rounded-3xl border border-neutral-200/85 hover:border-neutral-300 p-4 sm:p-7 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_-12px_rgba(0,0,0,0.09)] transition-all duration-300 flex flex-col justify-between overflow-hidden"
+              key={project.id || idx}
+              initial={{ opacity: 0, y: 35, scale: 0.97, filter: "blur(6px)" }}
+              whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+              viewport={{ once: true, amount: 0.15, margin: "-40px" }}
+              transition={{
+                duration: 0.7,
+                delay: (idx % 2) * 0.12,
+                ease: [0.16, 1, 0.3, 1],
+              }}
+              whileHover={{ y: -8, transition: { duration: 0.25, ease: "easeOut" } }}
+              className="group relative bg-white rounded-2xl sm:rounded-3xl border border-neutral-200/85 hover:border-[#FF6634]/50 p-4 sm:p-7 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.04)] hover:shadow-[0_24px_48px_-12px_rgba(255,102,52,0.14)] transition-[border-color,box-shadow] duration-300 flex flex-col justify-between overflow-hidden"
             >
               <div>
                 {/* Visual Image Container */}
@@ -135,14 +189,16 @@ export default function Works() {
                     height="375"
                     loading="lazy"
                     decoding="async"
-                    className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                    className="w-full h-full object-contain object-center transform group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
                   {/* Subtle top/bottom gradient overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-black/20 opacity-60 group-hover:opacity-40 transition-opacity duration-300 pointer-events-none" />
 
                   {/* Floating Category Badge */}
                   <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-10">
-                    <span className={`text-[11px] font-bold px-3 py-1.5 rounded-full border backdrop-blur-md ${project.badgeBg}`}>
+                    <span
+                      className={`text-[11px] font-bold px-3 py-1.5 rounded-full border backdrop-blur-md ${project.badgeBg}`}
+                    >
                       {project.category}
                     </span>
                   </div>
@@ -199,5 +255,5 @@ export default function Works() {
         </div>
       </div>
     </section>
-  )
+  );
 }

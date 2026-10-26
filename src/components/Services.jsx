@@ -1,156 +1,177 @@
-import React, { useState } from 'react'
-import { motion } from 'framer-motion'
+import { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 import {
   TrendingUp,
-  Target,
   Share2,
-  PenTool,
-  BarChart3,
-  Compass,
   CheckCircle2,
   Sparkles,
-} from 'lucide-react'
+  MousePointerClick,
+  Palette,
+  ShoppingCart,
+} from "lucide-react";
 
 export default function Services() {
-  const [activeCard, setActiveCard] = useState(null)
+  const sectionRef = useRef(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  });
+
+  const glow1Y = useTransform(scrollYProgress, [0, 1], [-60, 60]);
+  const glow2Y = useTransform(scrollYProgress, [0, 1], [60, -60]);
 
   const services = [
     {
-      id: '01',
-      title: 'Search Engine Optimization',
-      category: 'Organic Growth',
-      tagline: 'Top 1% Google rankings & sustained organic pipeline',
+      id: "01",
+      title: "Search Engine Optimization",
+      category: "Organic Growth",
+      tagline: "Improve rankings & grow organic visibility",
       description:
-        'Transform your organic presence into your highest-converting acquisition engine. Comprehensive technical audits, high-intent keyword architectures, and elite link acquisition.',
-      metric: '+280%',
-      metricLabel: 'Avg Organic Traffic Surge',
-      badgeColor: 'bg-[#85E26E]/15 text-[#2e7d18] border-[#85E26E]/30',
-      accentColor: '#85E26E',
+        "Improve search engine visibility through strategic keyword research, on-page and off-page SEO, and content optimization. Focus on achieving higher Google rankings and sustainable organic growth.",
+      metric: "Top 3",
+      metricLabel: "Google Search Ranking Achieved",
+      badgeColor: "bg-[#85E26E]/15 text-[#2e7d18] border-[#85E26E]/30",
+      accentColor: "#85E26E",
       icon: TrendingUp,
       deliverables: [
-        'Technical Site & Core Web Vitals Optimization',
-        'High-Intent Keyword Intelligence & Clusters',
-        'Topical Authority Architecture',
-        'High-DR Strategic Backlink Acquisition',
+        "Keyword Research & Competitor Analysis",
+        "On-Page SEO Optimization",
+        "Off-Page SEO & Link Building",
+        "Content Optimization",
+        "Google Search Console Monitoring",
       ],
     },
     {
-      id: '02',
-      title: 'Paid Media & PPC Advertising',
-      category: 'Performance Marketing',
-      tagline: 'Hyper-targeted ad funnels engineered for maximum ROAS',
+      id: "02",
+      title: "Social Media Marketing",
+      category: "Social & Growth",
+      tagline: "Build brand awareness & engage the right audience",
       description:
-        'Stop burning budget on unoptimized clicks. I construct multi-tier Google Search, Performance Max, and Meta ad ecosystems engineered for high-intent customer acquisition.',
-      metric: '4.8x',
-      metricLabel: 'Average Campaign ROAS',
-      badgeColor: 'bg-[#FF6634]/15 text-[#FF6634] border-[#FF6634]/30',
-      accentColor: '#FF6634',
-      icon: Target,
-      deliverables: [
-        'Google Ads & Performance Max Setup',
-        'Meta (Instagram & Facebook) Funnels',
-        'Dynamic Retargeting & Custom Audiences',
-        'Ad Creative A/B Testing & Copy Frameworks',
-      ],
-    },
-    {
-      id: '03',
-      title: 'Social Media Growth & Branding',
-      category: 'Brand Authority',
-      tagline: 'Viral reach, loyal communities & magnetic content',
-      description:
-        'Scale brand authority across Instagram, LinkedIn, and TikTok. Combining data-driven viral trends with high-aesthetic storytelling that builds unshakeable brand equity.',
-      metric: '500K+',
-      metricLabel: 'Direct Social Engagements',
-      badgeColor: 'bg-[#FFCD38]/20 text-[#a06800] border-[#FFCD38]/40',
-      accentColor: '#FFCD38',
+        "Build a strong social media presence through strategic content planning, consistent page management, and engaging promotional campaigns. Help brands strengthen their online identity, connect with their target audience, and grow across platforms like Instagram and Facebook.",
+      metric: "15+",
+      metricLabel: "Clients Across Brands & Industries",
+      badgeColor: "bg-[#38BDF8]/15 text-[#0369a1] border-[#38BDF8]/30",
+      accentColor: "#38BDF8",
       icon: Share2,
       deliverables: [
-        'Short-Form Video (Reels & Shorts) Strategy',
-        'Brand Narrative & Visual Styling',
-        'Creator & Influencer Partnership Management',
-        'Community Engagement & Lead Generation',
+        "Social Media Strategy & Content Planning",
+        "Instagram & Facebook Page Management",
+        "Content Calendar & Post Scheduling",
+        "Promotional Post & Creative Design",
+        "Audience Engagement & Performance Tracking",
       ],
     },
     {
-      id: '04',
-      title: 'Conversion Copy & Funnel Content',
-      category: 'Content Marketing',
-      tagline: 'Words that captivate minds and command action',
+      id: "03",
+      title: "Google Ads & SEM",
+      category: "Paid Search",
+      tagline: "Connect with customers actively searching for your services",
       description:
-        'Persuasive, high-converting copy that addresses consumer friction points. From high-converting landing pages to email nurture sequences that convert cold traffic into loyal advocates.',
-      metric: '34%',
-      metricLabel: 'Average Email Open Rate',
-      badgeColor: 'bg-[#FF6634]/15 text-[#FF6634] border-[#FF6634]/30',
-      accentColor: '#FF6634',
-      icon: PenTool,
+        "Create targeted Google Ads campaigns to help businesses reach potential customers at the right moment. Focus on keyword targeting, compelling ad copy, campaign optimization, and conversion tracking to improve visibility, attract relevant traffic, and support business growth.",
+      metric: "Search Ads",
+      metricLabel: "Campaign Setup & Optimization",
+      badgeColor: "bg-[#FACC15]/15 text-[#854d0e] border-[#FACC15]/30",
+      accentColor: "#FACC15",
+      icon: MousePointerClick,
       deliverables: [
-        'High-Converting Landing Page Sales Copy',
-        'Automated Welcome & Abandonment Drips',
-        'Authority Blog Articles & Whitepapers',
-        'Value Proposition & Brand Positioning Tone',
+        "Google Search Ads Campaign Setup",
+        "Keyword Research & Targeting",
+        "Ad Copy Creation & Optimization",
+        "Campaign Budget & Bid Optimization",
+        "Conversion Tracking & Performance Reporting",
       ],
     },
     {
-      id: '05',
-      title: 'Conversion Rate Optimization (CRO)',
-      category: 'Data Analytics',
-      tagline: 'Turn existing web visitors into paying customers',
+      id: "04",
+      title: "Poster Design & AI Video Creation",
+      category: "Creative Production",
+      tagline: "Create eye-catching posters & AI-powered videos",
       description:
-        'Eliminate funnel friction points. We analyze user sessions, heatmaps, and drop-off analytics to conduct systematic split tests that maximize revenue per session.',
-      metric: '+64%',
-      metricLabel: 'Checkout Conversion Lift',
-      badgeColor: 'bg-[#85E26E]/15 text-[#2e7d18] border-[#85E26E]/30',
-      accentColor: '#85E26E',
-      icon: BarChart3,
+        "Create visually engaging promotional posters and AI-generated videos for brands, products, and digital marketing campaigns. Combine creative design, AI-powered video production, and compelling visual storytelling to help businesses promote their offerings and capture audience attention across digital platforms.",
+      metric: "Multi-Format",
+      metricLabel: "Poster Design & AI Video Production",
+      badgeColor: "bg-[#FB7185]/15 text-[#be123c] border-[#FB7185]/30",
+      accentColor: "#FB7185",
+      icon: Palette,
       deliverables: [
-        'User Heatmaps & Session Recording Audits',
-        'A/B Multivariate Split Testing',
-        'Checkout & Inquiry Form Friction Removal',
-        'GA4 & Server-Side Event Tracking',
+        "Social Media Posters",
+        "AI-Generated Videos",
+        "Creative Design Using Canva & Photoshop",
+        "AI Video Production Using Google Flow & Kling AI",
       ],
     },
     {
-      id: '06',
-      title: 'Omnichannel Brand Scaling Strategy',
-      category: 'Strategic Advisory',
-      tagline: 'Comprehensive blueprints for enterprise market leadership',
+      id: "05",
+      title: "E-commerce Marketing",
+      category: "Online Sales Growth",
+      tagline: "Turn product visibility into online sales",
       description:
-        'Holistic digital roadmaps that unify all growth channels. Ideal for venture-backed startups and growing brands in the UAE & international markets ready to scale predictably.',
-      metric: '100+',
-      metricLabel: 'Brands Successfully Scaled',
-      badgeColor: 'bg-[#FFCD38]/20 text-[#a06800] border-[#FFCD38]/40',
-      accentColor: '#FFCD38',
-      icon: Compass,
+        "Help e-commerce businesses promote products, reach relevant audiences, and increase online sales through strategic digital marketing campaigns. Combine paid advertising, Meta Pixel tracking, promotional creatives, audience targeting, and conversion monitoring to measure campaign performance, understand customer behavior, and support online sales growth.",
+      metric: "Sales-Focused",
+      metricLabel: "E-commerce & Conversion Tracking",
+      badgeColor: "bg-[#F97316]/15 text-[#c2410c] border-[#F97316]/30",
+      accentColor: "#F97316",
+      icon: ShoppingCart,
       deliverables: [
-        'Market & Competitor Vulnerability Analysis',
-        'Omnichannel Customer Journey Architecture',
-        'Customer Acquisition Cost (CAC) Optimization',
-        'Quarterly Growth Sprint Roadmaps',
+        "E-commerce Marketing Strategy",
+        "Product Promotion Campaigns",
+        "Meta Ads for Product Sales",
+        "Meta Pixel Setup & Configuration",
+        "Website Event & Conversion Tracking",
+        "Campaign Performance Monitoring",
       ],
     },
-  ]
+
+    {
+      id: "06",
+      title: "Social Media Management",
+      category: "Social Media Growth",
+      tagline: "Build a consistent brand presence across social platforms",
+      description:
+        "Manage social media accounts through strategic content planning, post scheduling, creative publishing, and audience engagement. Maintain a consistent brand identity across platforms like Instagram and Facebook while monitoring performance insights to improve content effectiveness and strengthen online presence.",
+      metric: "End-to-End",
+      metricLabel: "Social Media Account Management",
+      badgeColor: "bg-[#38BDF8]/15 text-[#0369a1] border-[#38BDF8]/30",
+      accentColor: "#38BDF8",
+      icon: Share2,
+      deliverables: [
+        "Instagram & Facebook Page Management",
+        "Monthly Content Calendar Planning",
+        "Post Scheduling & Publishing",
+        "Caption & Hashtag Research",
+        "Community Management & Audience Engagement",
+        "Insights Monitoring & Performance Reporting",
+      ],
+    },
+  ];
 
   return (
-    <section id="services" className="relative w-full py-12 sm:py-16 md:py-20 overflow-hidden select-none bg-[#F9F7F2]">
-      {/* Ambient background glows matching brand palette */}
-      <div
-        className="pointer-events-none absolute top-1/4 -left-48 w-96 h-96 bg-[#FF6634]/5 rounded-full blur-3xl -z-10"
+    <section
+      ref={sectionRef}
+      id="services"
+      className="relative w-full py-14 sm:py-18 md:py-24 overflow-hidden select-none bg-[#F9F7F2]"
+    >
+      {/* Ambient background glows matching brand palette with parallax */}
+      <motion.div
+        style={{ y: glow1Y }}
+        className="pointer-events-none absolute top-1/4 -left-48 w-96 h-96 bg-[#FF6634]/5 rounded-full blur-3xl -z-10 will-change-transform"
         aria-hidden="true"
       />
-      <div
-        className="pointer-events-none absolute bottom-1/3 -right-48 w-96 h-96 bg-[#FFCD38]/10 rounded-full blur-3xl -z-10"
+      <motion.div
+        style={{ y: glow2Y }}
+        className="pointer-events-none absolute bottom-1/3 -right-48 w-96 h-96 bg-[#FFCD38]/10 rounded-full blur-3xl -z-10 will-change-transform"
         aria-hidden="true"
       />
 
       <div className="max-w-[1240px] mx-auto px-4 sm:px-8 lg:px-12">
         {/* Header Block */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-12 gap-6">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 sm:mb-14 gap-6">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, y: 25, filter: "blur(6px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true, amount: 0.3, margin: "-40px" }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-2xl"
           >
             {/* Pill Eyebrow */}
@@ -165,40 +186,42 @@ export default function Services() {
             </div>
 
             <h3 className="font-display font-black text-2xl sm:text-3xl md:text-4xl lg:text-[42px] text-neutral-950 tracking-tight uppercase leading-[1.1]">
-              HIGH-IMPACT STRATEGIES TAILORED FOR{' '}
+              COMPREHENSIVE SERVICES TAILORED FOR{" "}
               <span className="text-[#FF6634] underline decoration-neutral-900/10 decoration-wavy decoration-2">
-                MEASURABLE ROI
+                BUSINESS GROWTH
               </span>
             </h3>
           </motion.div>
 
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.15 }}
+            initial={{ opacity: 0, y: 25, filter: "blur(6px)" }}
+            whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+            viewport={{ once: true, amount: 0.3, margin: "-40px" }}
+            transition={{ duration: 0.7, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
             className="font-body text-sm sm:text-base text-neutral-600 max-w-md leading-relaxed"
           >
-            Every campaign is precision-engineered using verified behavioral data, aggressive audience testing, and bespoke funnel architecture designed to outperform competitors.
+            Combining data-driven marketing strategies with creative execution to
+            boost online visibility, engage the right audiences, and drive
+            measurable results.
           </motion.p>
         </div>
 
-        {/* 6-Card Services Grid */}
+        {/* Services Grid with Row-Aware Cascade Stagger */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-7 lg:gap-8">
           {services.map((service, index) => {
-            const Icon = service.icon
-            const isHovered = activeCard === service.id
+            const Icon = service.icon;
+            // Row-aware stagger (modulo 3 on desktop, modulo 2 on tablet)
+            const staggerDelay = (index % 3) * 0.1;
 
             return (
               <motion.div
                 key={service.id}
-                initial={{ opacity: 0, y: 25 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.08 }}
-                onMouseEnter={() => setActiveCard(service.id)}
-                onMouseLeave={() => setActiveCard(null)}
-                className="group relative bg-white/85 backdrop-blur-md rounded-2xl p-5 sm:p-7 border border-neutral-200/80 hover:border-[#FF6634]/50 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.04)] hover:shadow-[0_20px_40px_-15px_rgba(255,102,52,0.14)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between"
+                initial={{ opacity: 0, y: 35, filter: "blur(6px)" }}
+                whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                viewport={{ once: true, amount: 0.15, margin: "-40px" }}
+                transition={{ duration: 0.65, delay: staggerDelay, ease: [0.16, 1, 0.3, 1] }}
+                whileHover={{ y: -8, transition: { duration: 0.25, ease: "easeOut" } }}
+                className="group relative bg-white/90 backdrop-blur-md rounded-2xl p-5 sm:p-7 border border-neutral-200/80 hover:border-[#FF6634]/50 shadow-[0_4px_20px_-8px_rgba(0,0,0,0.04)] hover:shadow-[0_22px_45px_-12px_rgba(255,102,52,0.16)] transition-[border-color,box-shadow] duration-300 flex flex-col justify-between"
               >
                 {/* Top Bar: Icon, Number, & Metric Pill */}
                 <div>
@@ -212,7 +235,9 @@ export default function Services() {
                       </span>
                     </div>
 
-                    <div className={`px-2.5 py-1 rounded-full border text-[11px] font-bold tracking-tight ${service.badgeColor}`}>
+                    <div
+                      className={`px-2.5 py-1 rounded-full border text-[11px] font-bold tracking-tight ${service.badgeColor}`}
+                    >
                       {service.category}
                     </div>
                   </div>
@@ -263,11 +288,10 @@ export default function Services() {
                   </div>
                 </div>
               </motion.div>
-            )
+            );
           })}
         </div>
       </div>
     </section>
-  )
+  );
 }
-

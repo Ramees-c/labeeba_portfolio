@@ -1,26 +1,31 @@
 import React from 'react'
+import { motion } from 'framer-motion'
 import { ArrowUpRight } from 'lucide-react'
 
 export default function Footer() {
   const socialLinks = [
-    { name: 'LinkedIn', href: 'https://linkedin.com' },
-    { name: 'Instagram', href: 'https://instagram.com' },
-    { name: 'Twitter / X', href: 'https://twitter.com' },
+    { name: 'LinkedIn', href: 'https://www.linkedin.com/in/labeeba-v-26a138339?utm_source=share_via&utm_content=profile&utm_medium=member_android' },
+    { name: 'Instagram', href: 'https://www.instagram.com/labeeba_hassan?cplk=ejh2aTd0aGx4a2tx' },
     { name: 'WhatsApp', href: 'https://wa.me/918606268275' },
-    { name: 'Email', href: 'mailto:hello@labeebadigital.com' },
+    { name: 'Email', href: 'mailto:labeebahassan333@gmail.com' },
   ]
 
   return (
-    <footer id="contact" className="w-full bg-neutral-950 text-white py-10 sm:py-14 border-t border-neutral-900 select-none relative overflow-hidden">
+    <footer id="contact" className="w-full bg-neutral-950 text-white py-12 sm:py-16 border-t border-neutral-900 select-none relative overflow-hidden">
       {/* Subtle ambient brand glow in the background */}
-      <div 
+      <div
         className="pointer-events-none absolute top-0 left-1/4 w-96 h-32 bg-[#FF6634]/10 rounded-full blur-3xl -z-10"
-        aria-hidden="true" 
+        aria-hidden="true"
       />
 
       <div className="max-w-[1240px] mx-auto px-4 sm:px-8 lg:px-12">
-        <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 sm:gap-10">
-          
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.15 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col md:flex-row md:items-center justify-between gap-8 sm:gap-10"
+        >
           {/* ================= LEFT SIDE: NAME & DESCRIPTION ================= */}
           <div className="max-w-md">
             <a
@@ -31,7 +36,7 @@ export default function Footer() {
               <span className="text-[#FF6634] text-3xl sm:text-4xl leading-none">.</span>
             </a>
             <p className="font-body text-xs sm:text-sm text-neutral-400 leading-relaxed">
-              Senior Digital Marketer & Growth Strategist based in Dubai, UAE. Helping ambitious brands scale predictable organic and paid revenue.
+              Digital Marketing & Web Development Executive helping businesses grow through SEO, paid advertising, social media marketing, and creative digital solutions.
             </p>
             <p className="font-body text-[11px] text-neutral-600 mt-4">
               © {new Date().getFullYear()} Labeeba. All rights reserved.
@@ -53,8 +58,7 @@ export default function Footer() {
               </a>
             ))}
           </div>
-
-        </div>
+        </motion.div>
       </div>
     </footer>
   )

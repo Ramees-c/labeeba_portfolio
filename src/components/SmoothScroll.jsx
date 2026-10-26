@@ -10,16 +10,16 @@ export default function SmoothScroll({ children }) {
   const lenisRef = useRef(null)
 
   useEffect(() => {
-    // Initialize Lenis smooth scroll engine
+    // Initialize Lenis smooth scroll engine with stable, fluid momentum
     const lenis = new Lenis({
-      duration: 1.1,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Exponential deceleration
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Silky exponential deceleration curve
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
       wheelMultiplier: 1.0,
       touchMultiplier: 1.0,
-      syncTouch: false, // Keep native 120Hz touch momentum on mobile devices
+      syncTouch: false, // Preserve native 120Hz touch momentum on mobile devices
       infinite: false,
     })
 
@@ -54,7 +54,7 @@ export default function SmoothScroll({ children }) {
         const targetId = href.slice(1)
         if (!targetId || targetId === '' || targetId === 'top') {
           e.preventDefault()
-          lenis.scrollTo(0, { duration: 1.2 })
+          lenis.scrollTo(0, { duration: 1.3, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) })
           return
         }
 
@@ -63,7 +63,8 @@ export default function SmoothScroll({ children }) {
           e.preventDefault()
           lenis.scrollTo(targetEl, {
             offset: -75, // Navbar compensation
-            duration: 1.2,
+            duration: 1.3,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
           })
 
           // Maintain URL hash state cleanly without page jumping
