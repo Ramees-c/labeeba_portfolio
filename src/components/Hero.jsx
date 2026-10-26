@@ -63,7 +63,7 @@ export default function Hero({ onOpenProcess, onOpenContact }) {
                 height="610"
                 fetchpriority="high"
                 decoding="async"
-                className="h-[320px] min-[360px]:h-[370px] sm:h-[450px] md:h-[510px] lg:h-[570px] xl:h-[610px] w-auto max-w-[90vw] sm:max-w-[85vw] object-contain object-bottom drop-shadow-[0_20px_35px_rgba(20,20,22,0.15)] select-none pointer-events-none filter contrast-[1.03] [mask-image:linear-gradient(to_bottom,black_95%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_95%,transparent_100%)]"
+                className="h-[320px] min-[360px]:h-[370px] sm:h-[450px] md:h-[510px] lg:h-[570px] xl:h-[610px] w-auto max-w-[90vw] sm:max-w-[85vw] object-contain object-bottom drop-shadow-[0_20px_35px_rgba(20,20,22,0.15)] select-none pointer-events-none hero-portrait-mask"
                 loading="eager"
               />
             </div>

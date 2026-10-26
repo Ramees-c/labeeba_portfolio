@@ -234,7 +234,7 @@ export default function About() {
                     key={idx}
                     initial={{ opacity: 0, y: 22 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: '-40px' }}
+                    viewport={{ once: true, margin: '0px', amount: 0.1 }}
                     transition={{ duration: 0.5, delay: 0.12 * idx, ease: [0.22, 1, 0.36, 1] }}
                     className="group relative bg-white/70 backdrop-blur-sm border border-neutral-200/90 hover:border-[#FF6634]/40 rounded-xl p-4 sm:p-5 shadow-[0_4px_16px_-8px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_24px_-6px_rgba(255,102,52,0.12)] transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between cursor-default"
                   >

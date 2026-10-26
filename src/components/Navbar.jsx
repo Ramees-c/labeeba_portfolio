@@ -180,6 +180,7 @@ export default function Navbar({ onOpenContact }) {
               transition={{ duration: 0.2 }}
               onClick={() => setMobileMenuOpen(false)}
               className="md:hidden fixed inset-0 top-[62px] bg-black/25 backdrop-blur-[2px] z-40"
+              style={{ backgroundColor: 'rgba(0, 0, 0, 0.25)' }}
               aria-hidden="true"
             />
             <motion.div
@@ -188,6 +189,7 @@ export default function Navbar({ onOpenContact }) {
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.25 }}
               className="md:hidden relative z-50 bg-[#F8F6F0]/98 backdrop-blur-xl border-b border-neutral-200 px-6 py-5 overflow-hidden shadow-xl"
+              style={{ backgroundColor: 'rgba(248, 246, 240, 0.98)' }}
             >
               <div className="flex flex-col gap-3">
                 {navLinks.map((link) => (
